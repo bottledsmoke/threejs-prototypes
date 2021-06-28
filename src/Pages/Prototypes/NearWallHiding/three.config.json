@@ -1,0 +1,22 @@
+{
+  "src": "./public/models/NearWallHiding.glb",
+  "dest": "./src/Pages/Prototypes/NearWallHiding/Model.js",
+  "Renderer": {
+    "camera": { "position": [0, 2, 5] },
+    "style": {
+      "backgroundColor": "#22115b"
+    },
+    "orthographic": false
+  },
+  "Scene": {
+    "lighting": {
+      "lightingRadius": 25,
+      "intensity": 2
+    },
+    "helpers": {
+      "lightingBounds": false,
+      "shadow": false,
+      "lights": false
+    }
+  }
+}

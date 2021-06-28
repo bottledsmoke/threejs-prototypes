@@ -1,0 +1,39 @@
+:root {
+  --white: #ebebeb;
+  --indigo: #1a212e;
+  --red: red;
+  --green: green;
+  --link: #067df7;
+}
+
+.white {
+  color: var(--white);
+}
+
+.white-fill {
+  background-color: var(--white);
+}
+
+.indigo {
+  color: var(--indigo);
+}
+
+.indigo-fill {
+  background-color: var(--indigo);
+}
+
+.link {
+  color: var(--link);
+}
+
+.link-fill {
+  background-color: var(--link);
+}
+
+.red {
+  color: var(--red);
+}
+
+.green {
+  color: var(--green);
+}

@@ -1,0 +1,16 @@
+{
+  "src": "./public/models/BaseRig.glb",
+  "dest": "./src/Pages/Room_v2/model.js",
+  "Renderer": {
+    "camera": { "position": [1, 2, 2] },
+    "style": {
+      "backgroundColor": "#1D2332"
+    }
+  },
+  "Scene": {
+    "lightingRadius": 3,
+    "helpers": {
+      "lightingBounds": false
+    }
+  }
+}

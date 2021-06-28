@@ -1,0 +1,16 @@
+{
+  "src": "",
+  "dest": "",
+  "Renderer": {
+    "cameraPosition": [1, 2, 2],
+    "style": {
+      "backgroundColor": "#1D2332"
+    }
+  },
+  "Scene": {
+    "lightingRadius": 3,
+    "helpers": {
+      "lightingBounds": false
+    }
+  }
+}

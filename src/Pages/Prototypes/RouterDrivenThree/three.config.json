@@ -1,0 +1,23 @@
+{
+  "src": "./public/models/Default_Cube.glb",
+  "dest": "./src/Pages/Room/Model.js",
+  "Renderer": {
+    "camera": {
+      "position": [1, 1, 1],
+      "zoom": 150
+    },
+    "style": {
+      "backgroundColor": "#22115b"
+    },
+    "orthographic": true
+  },
+  "Scene": {
+    "lighting": {
+      "lightingRadius": 5,
+      "intensity": 0.0625
+    },
+    "helpers": {
+      "lightingBounds": true
+    }
+  }
+}
