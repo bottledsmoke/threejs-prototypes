@@ -1,6 +1,6 @@
 import { Vector2 } from "three";
 import React, { useRef, Fragment, useLayoutEffect } from "react";
-import {  useThree, useFrame } from "@react-three/fiber";
+import { useThree, useFrame } from "@react-three/fiber";
 import { useGLTF, Html, Plane } from "@react-three/drei";
 import { animated as a } from "@react-spring/three";
 
@@ -8,7 +8,6 @@ import { arraysMatch } from "helpers/arraysMatch";
 import { useNearWallHiding } from "hooks";
 
 // TODO: Extract raycaster method of hiding and showing walls from here and put it into the hook.
-
 
 export default function Walls(props) {
   const group = useRef();
@@ -115,9 +114,9 @@ export default function Walls(props) {
           );
         })}
       </scene>
-      <Html postiion={[5, 5, 5]}>
+      {/* <Html postiion={[5, 5, 5]}>
         <button onClick={() => cycleWalls()}> Cycle Walls</button>
-      </Html>
+      </Html> */}
     </group>
   );
 }

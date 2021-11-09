@@ -1,6 +1,6 @@
 /**
  * Prototype Router
- * This is an example of a router integrating with "@react-three/fiber" by using useRouteMatch() with a
+ * This is an example of a router integrating with "@react-three/fiber" by using useMatch() with a
  * router outside of the route tree. This allows routes to change while not re-rendering the scene.
  *
  * Main feature: the <Canvas> component is outside of the Switch statement in the component tree.
@@ -19,7 +19,6 @@ import {
   Routes,
   Route,
   NavLink,
-  useRouteMatch,
   useLocation,
   useParams,
 } from "react-router-dom";
@@ -47,7 +46,7 @@ export default function Prototypes() {
             {_map(prototypeRoutes, (route, i) => (
               <li key={`${route.name}-${i}`}>
                 <NavLink
-                  to={`${url === "/" ? "/prototypes" : url}${route.path}`}
+                  to={`${route.path}`}
                   activeClassName={"active"}
                   className={colors.link}
                 >

@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route exact path={"/"} element={<Prototypes />}></Route>
+          <Route path={"/"} element={<Prototypes />}></Route>
           <Route path={"prototypes/*"} element={<Prototypes />}></Route>
         </Routes>
       </Router>
