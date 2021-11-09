@@ -46,7 +46,7 @@ export default function Prototypes() {
             {_map(prototypeRoutes, (route, i) => (
               <li key={`${route.name}-${i}`}>
                 <NavLink
-                  to={`${route.path}`}
+                  to={`${url === "/" ? "/prototypes/" : ""}${route.path}`}
                   activeClassName={"active"}
                   className={colors.link}
                 >
