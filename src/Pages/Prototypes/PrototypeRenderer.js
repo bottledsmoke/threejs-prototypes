@@ -8,7 +8,7 @@ import { ThreeRenderer } from "Components3D/ThreeRenderer";
 import _config from "./RouterDrivenThree/three.config.json";
 // End TODO
 
-// TODO The aperature is not being recalculated when the window is resized. Since I overrode the default camera, fix that shit.
+// TODO The aperature is not being recalculated when the window is resized. Since I overrode the default camera, fix it.
 import { PerspectiveCamera } from "Components3D/Cameras/PerspectiveCamera";
 
 // TODO Move all the routing logic to the PrototypeRouter and get it the heck out of this component.

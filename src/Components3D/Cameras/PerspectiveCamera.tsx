@@ -10,7 +10,7 @@ import type {
 
 /**
  * TODO
- * LookAt should just be an array. Let the camera have the logic for looking at shit.
+ * LookAt should just be an array. Let the camera have the logic for looking at things.
  */
 
 /**
@@ -69,7 +69,7 @@ export const PerspectiveCamera: React.FC<PerspectiveCameraProps> = ({
 
   // Make the camera known to the system
   useEffect(() => {
-    set({camera: camera.current})
+    set({ camera: camera.current });
   }, [set]);
 
   // Update it every frame
