@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { useThree, useFrame } from "@react-three/fiber";
 import { animated as a } from "@react-spring/three";
-import type { SpringValue } from "react-spring";
+import type { SpringValue } from "@react-spring/three";
 import type {
   Vector3,
   Euler,

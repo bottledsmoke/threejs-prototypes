@@ -1,9 +1,11 @@
+// @ts-nocheck
+
 import React, { useRef, useEffect } from "react";
 import { extend, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { useControlsStore } from "Pages/Prototypes/threeState";
 import { useSpring, config as springConfig } from "@react-spring/three";
-import type { SpringValue } from "react-spring";
+import type { SpringValue } from "@react-spring/three";
 
 // TYPE DEFINITIONS
 

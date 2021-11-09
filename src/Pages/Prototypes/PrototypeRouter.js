@@ -13,67 +13,72 @@
  * of that prototype will lead to the adoption of the features above.
  */
 
- import colors from "colors.module.css";
- import "./prototypes.css";
- import {
-   Switch,
-   Route,
-   NavLink,
-   useRouteMatch,
-   useParams
- } from "react-router-dom";
+import colors from "colors.module.css";
+import "./prototypes.css";
+import {
+  Routes,
+  Route,
+  NavLink,
+  useRouteMatch,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 
- import { PrototypeTitle } from "./PrototypeTitle";
+import { PrototypeTitle } from "./PrototypeTitle";
 
- import prototypeRoutes from "./prototypeRoutes";
+import prototypeRoutes from "./prototypeRoutes";
 
- import { map as _map } from "lodash";
+import { map as _map } from "lodash";
 
- import Three from "./PrototypeRenderer";
+import Three from "./PrototypeRenderer";
 
- export default function Prototypes() {
-   let { path, url } = useRouteMatch();
+export default function Prototypes() {
+  let location = useLocation();
 
-   return (
-     <>
-       <div className={"flex-container"}>
-         <div className={`flex1 ${colors["white-fill"]}`}>
-           <h1 className={colors.indigo}>Prototypes</h1>
-           <ul className={"nav-list"}>
-             {_map(prototypeRoutes, (route, i) => (
-               <li key={`${route.name}-${i}`}>
-                 <NavLink
-                   to={`${url === "/" ? "/prototypes" : url}${route.path}`}
-                   activeClassName={"active"}
-                   className={colors.link}
-                 >
-                   {route.name}
-                 </NavLink>
-               </li>
-             ))}
-           </ul>
-         </div>
-         <div className={"flex2"}>
-           <Switch>
-             <Route path={`${path}/:prototypeId`}>
-               <TitleProvider />
-             </Route>
-           </Switch>
-           <Three />
-         </div>
-         <style>{`
+  const url = location.pathname;
+  console.log(location);
+
+  return (
+    <>
+      <div className={"flex-container"}>
+        <div className={`flex1 ${colors["white-fill"]}`}>
+          <h1 className={colors.indigo}>Prototypes</h1>
+          <ul className={"nav-list"}>
+            {_map(prototypeRoutes, (route, i) => (
+              <li key={`${route.name}-${i}`}>
+                <NavLink
+                  to={`${url === "/" ? "/prototypes" : url}${route.path}`}
+                  activeClassName={"active"}
+                  className={colors.link}
+                >
+                  {route.name}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className={"flex2"}>
+          <Routes>
+            <Route
+              path={`:prototypeId`}
+              element={<TitleProvider></TitleProvider>}
+            ></Route>
+          </Routes>
+          <Three />
+        </div>
+        <style>{`
            a.active {
              font-weight: 600;
            }
          `}</style>
-       </div>
-     </>
-   );
- }
+      </div>
+    </>
+  );
+}
 
- const TitleProvider = () => {
-   const { prototypeId: pid } = useParams();
-   const title = prototypeRoutes[pid].name;
+const TitleProvider = () => {
+  const { prototypeId: pid } = useParams();
+  const title = prototypeRoutes[pid].name;
 
-   return <PrototypeTitle>{title}</PrototypeTitle>;
- };
+  return <PrototypeTitle>{title}</PrototypeTitle>;
+};

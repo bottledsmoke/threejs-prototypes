@@ -1,6 +1,6 @@
 import React from "react";
 import "./prototypes.css";
-import { useRouteMatch } from "react-router-dom";
+import { useMatch } from "react-router-dom";
 import prototypeRoutes from "./prototypeRoutes";
 import { ThreeRenderer } from "Components3D/ThreeRenderer";
 
@@ -14,7 +14,7 @@ import { PerspectiveCamera } from "Components3D/Cameras/PerspectiveCamera";
 // TODO Move all the routing logic to the PrototypeRouter and get it the heck out of this component.
 
 const Three = () => {
-  const match = useRouteMatch("/prototypes/:prototypeId");
+  const match = useMatch("/prototypes/:prototypeId");
   // if match is null (default return for no match) return route.
   const pid = match && match.params.prototypeId;
 
