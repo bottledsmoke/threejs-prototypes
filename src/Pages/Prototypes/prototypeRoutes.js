@@ -37,11 +37,11 @@ const PrototypeRoutes = {
     name: "Office Tour Viewer",
     component: OfficeTourViewer,
   },
-  "base-rig": {
-    path: "base-rig",
-    name: "Base Rig",
-    component: BaseRig,
-  },
+  // "base-rig": {
+  //   path: "base-rig",
+  //   name: "Base Rig",
+  //   component: BaseRig,
+  // },
   // BEGIN SCAFFOLDED ROUTES
   "near-wall-hiding": {
     path: "near-wall-hiding",
