@@ -26,12 +26,8 @@ function OrthographicCamera({
 
   // Make the camera known to the system
   useEffect(() => {
-    set({camera: camera.current})
-  }, [set]);
-  // Make the camera known to the system
-  useEffect(() => {
-    set({camera: camera.current};
-          camera.current.lookAt(lookAt[0], lookAt[1], lookAt[2]);
+    set({camera: camera.current});
+    camera.current.lookAt(lookAt[0], lookAt[1], lookAt[2]);
   }, [set, lookAt]);
   // Update it every frame
   useFrame(() => {

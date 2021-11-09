@@ -4,72 +4,76 @@
  * router outside of the route tree. This allows routes to change while not re-rendering the scene.
  *
  * Main feature: the <Canvas> component is outside of the Switch statement in the component tree.
+ *
+ * Using this approach, we can maintain a renderer across route changes. This unlocks the ability
+ * to animate 3D assets in and out of the scene, move the camera from one page to the next, etc.
+ *
+ * The current implementation plan is to use three.config.json files in each prototype and animate the
+ * camera to the defaults for each prototype. I'm currently working on ZustandCamera first. The completion
+ * of that prototype will lead to the adoption of the features above.
  */
 
-import colors from "colors.module.css";
-import "./prototypes.css";
-import {
-  Switch,
-  Route,
-  NavLink,
-  useRouteMatch,
-  useParams,
-} from "react-router-dom";
+ import colors from "colors.module.css";
+ import "./prototypes.css";
+ import {
+   Switch,
+   Route,
+   NavLink,
+   useRouteMatch,
+   useParams
+ } from "react-router-dom";
 
-import { PrototypeTitle } from "./PrototypeTitle";
+ import { PrototypeTitle } from "./PrototypeTitle";
 
-import prototypeRoutes from "./prototypeRoutes";
+ import prototypeRoutes from "./prototypeRoutes";
 
-import { map as _map } from "lodash";
+ import { map as _map } from "lodash";
 
-import Three from "./PrototypeRenderer";
+ import Three from "./PrototypeRenderer";
 
-export default function Prototypes() {
-  let { path, url } = useRouteMatch();
+ export default function Prototypes() {
+   let { path, url } = useRouteMatch();
 
-  console.log(path, url);
+   return (
+     <>
+       <div className={"flex-container"}>
+         <div className={`flex1 ${colors["white-fill"]}`}>
+           <h1 className={colors.indigo}>Prototypes</h1>
+           <ul className={"nav-list"}>
+             {_map(prototypeRoutes, (route, i) => (
+               <li key={`${route.name}-${i}`}>
+                 <NavLink
+                   to={`${url === "/" ? "/prototypes" : url}${route.path}`}
+                   activeClassName={"active"}
+                   className={colors.link}
+                 >
+                   {route.name}
+                 </NavLink>
+               </li>
+             ))}
+           </ul>
+         </div>
+         <div className={"flex2"}>
+           <Switch>
+             <Route path={`${path}/:prototypeId`}>
+               <TitleProvider />
+             </Route>
+           </Switch>
+           <Three />
+         </div>
+         <style>{`
+           a.active {
+             font-weight: 600;
+           }
+         `}</style>
+       </div>
+     </>
+   );
+ }
 
-  return (
-    <>
-      <div className={"flex-container"}>
-        <div className={`flex1 ${colors["white-fill"]}`}>
-          <h1 className={colors.indigo}>Prototypes</h1>
-          <ul className={"nav-list"}>
-            {_map(prototypeRoutes, (route, i) => (
-              <li key={`${route.name}-${i}`}>
-                <NavLink
-                  to={`${url}${route.path}`}
-                  activeClassName={"active"}
-                  className={colors.link}
-                >
-                  {route.name}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={"flex2"}>
-          <Switch>
-            <Route path={`${path}/:prototypeId`}>
-              <TitleProvider />
-            </Route>
-          </Switch>
-          <Three />
-        </div>
-        <style>{`
-          a.active {
-            font-weight: 600;
-          }
-        `}</style>
-      </div>
-    </>
-  );
-}
+ const TitleProvider = () => {
+   const { prototypeId: pid } = useParams();
+   const title = prototypeRoutes[pid].name;
 
-const TitleProvider = () => {
-  const { prototypeId: pid } = useParams();
-  const title = prototypeRoutes[pid].name;
-
-  return <PrototypeTitle>{title}</PrototypeTitle>;
-};
-
+   return <PrototypeTitle>{title}</PrototypeTitle>;
+ };
